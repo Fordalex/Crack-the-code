@@ -10,6 +10,10 @@ var cashSymbol = '£';
 var cash = 0;
 
 refresh();
+document.getElementById('codeOneLightIndicator').innerHTML = '<div class="light-indicator-off"></div>';
+document.getElementById('codeTwoLightIndicator').innerHTML = '<div class="light-indicator-off"></div>';
+document.getElementById('codeThreeLightIndicator').innerHTML = '<div class="light-indicator-off"></div>';
+document.getElementById('codeFourLightIndicator').innerHTML = '<div class="light-indicator-off"></div>';
 
 function refresh() {
     // lights on or off
@@ -31,18 +35,22 @@ function refresh() {
     // if right light sequence
     if (lightOne === false && lightTwo === true && lightThree === true) {
         document.getElementById('showCodeOne').innerHTML = '<p>You<span> </span></p>';
+        document.getElementById('codeOneLightIndicator').innerHTML = '<div class="light-indicator-on"></div>';
         codeOne = true;
     }
     if (lightOne === false && lightTwo === true && lightThree === false) {
         document.getElementById('showCodeTwo').innerHTML = '<p>Have<span> </span></p>';
+        document.getElementById('codeTwoLightIndicator').innerHTML = '<div class="light-indicator-on"></div>';
         codeTwo = true;
     }
     if (lightOne === true && lightTwo === false && lightThree === false) {
         document.getElementById('showCodeThree').innerHTML = '<p>Won </p>';
+        document.getElementById('codeThreeLightIndicator').innerHTML = '<div class="light-indicator-on"></div>';
         codeThree = true;
     }
     if (lightOne === true && lightTwo === true && lightThree === true) {
         document.getElementById('showCodeFour').innerHTML = '<p>£250</p>';
+        document.getElementById('codeFourLightIndicator').innerHTML = '<div class="light-indicator-on"></div>';
         codeFour = true;
     }
     // code cracked
@@ -53,7 +61,7 @@ function refresh() {
     if (codeCracked === true) {
         cash = 250;
     }
-    // fill cash
+    // initial load
     document.getElementById('cash').innerHTML = cashSymbol + cash;
 }
 
